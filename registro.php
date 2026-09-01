@@ -1,5 +1,4 @@
 <?php
-session_start();
 include("conexion.php");
 $user=$_POST['usuario'];
 $pass=$_POST['clave'];
@@ -14,10 +13,8 @@ if(mysqli_query($conexion,$sql)){
 	$res1=mysqli_query($conexion,$sql1) or die("Error en la consulta de reseñas: " . mysqli_error($conexion));
 	$id=mysqli_fetch_assoc($res1);
 	$sql2="INSERT INTO direccion(id_usuario, localidad, calle, numero) VALUES ({$id['id_usuario']}, '$local', '$calle', '$num' )";
-	$res2=mysqli_query($conexion,$sql2);
-	$_SESSION['user']=$user;
-    $_SESSION['pass']=$pass;
-	header("Location:index.php ");
+	$res2=mysqli_query($conexion,$sql2)
+	header("Location:inicio.html ");
 }else{
 	echo "No se pudo registrar el usuario";
 }
