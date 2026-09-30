@@ -2,16 +2,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pedidos.css">
+    <link rel="stylesheet" href="pedidos2.css">
     <title>TECHNICIAN MARKET-TECNICO</title>
 </head>
 <body>
-    <div class="top-bar">
-        <div class="busqueda">
-            <img src="" alt="">
-            <input type="text" placeholder="Buscar técnicos">
-        </div>
-    </div>
 
     <div class="container">
         <aside>
@@ -33,11 +27,20 @@
             <main>
                 <div class="pedidos">
                         <?php
+                        ini_set('display_errors', 0);
+                        error_reporting(0);
                         session_start();
                         include("conexion.php");
+                    if($_SESSION['user']==""){
+                     echo '<p class="error">NO se detecta usuario, Registrese o Inicie seción</p>';
+                    }
+                    else{
                         $id_usuario=$_SESSION["id_usuario"];
                         $sql="SELECT * FROM pedidos WHERE id_usuario = '$id_usuario'";
-                        $resultado=mysqli_query($conexion,$sql) or die("Error en SQL: " . mysqli_error($conexion));           
+                        $resultado=mysqli_query($conexion,$sql) or die("Error en SQL: " . mysqli_error($conexion));
+                        if(mysqli_num_rows($resultado) == 0) {
+                            echo "no se encontraron pedidos para el usuario: ".$id_usuario;
+                        }          
                         while($fila = mysqli_fetch_assoc($resultado)){
                         $sql1="SELECT nom_estado FROM estados WHERE id_estado={$fila['id_estado']}";
                         $res1=mysqli_query($conexion,$sql1);
@@ -49,7 +52,7 @@
                         $res3=mysqli_query($conexion, $sql3);
                         $fila_especialidad=mysqli_fetch_assoc($res3);
                         echo ('
-                        <div class="pedido">
+                            <div class="pedido">
                            <div class="pedido-info">
                             <div class="data">
                             <img class="pedido-ima" src="imagenes/perfil.png" alt="">
@@ -64,31 +67,28 @@
                                 <p>'.$fila["fecha"].'</p>
                             </div>
                             </div>
+                             <div class="separar">
+                                </div>
+                               <div class="info-pedido">
+                               <p> Problema: <span class="info">'.$fila["nombre_pedido"].'</span></p>
+                               <p> Tipo: <span class="info">'.$fila["tipo_pedido"].'</span></p>
+                               <p> Descripcion: <span class="info">'.$fila["decri_pedido"].'</span></p>
+                               </div>
+                            
                             ');
-                            if($fila["id_estado"]==2){
-                                echo('
-                                <div class="separar">
+                            if($fila['id_estado']== 2){
+                                echo ('
+                                <div class="boton">
+                                <a href=""><button> Calificar</button></a>
+                                <a href=""><button> borrar</button></a>
                                 </div>
-                                <div class="reseña">
-                                <form method="POST" action="">
-                                <div>
-                                <label for="mensaje">Escribe tu opinión:</label>
-                                </div>
-                                <div>
-                                <textarea id="comentarios" name="mensaje" rows="4" cols="50" placeholder="Deja tu mensaje aquí..."></textarea>
-                                </div>
-                                <div>
-                                <button class="mensaje-bot">
-                                Enviar
-                                </button>
-                                </div>
-                                </form>
-                                </div>
-                                
                                 ');
+
                             }
+                               
                             echo('</div>');
                         }
+                    }
                         ?>
                 </div>
             </main>

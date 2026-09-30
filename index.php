@@ -75,14 +75,14 @@
                             </div>
                             <div class="linea"></div>
                             <div class="info-tecnico">
-                                <p>'.$fila["valoracion_media"].'
+                                <p>⭐'.$fila["valoracion_media"].'
                             </p>
                             </div>
                             <div class="info-tecnico">
-                                <p>'.$fila["zona"].'</p>
+                                <p>📍'.$fila["zona"].'</p>
                             </div>
                             <div class="info-tecnico">
-                                <p>'
+                                <p>💼'
                                 .$fila_especialidad["nom_especialidad"].'</p>
                             </div>
                             <div class="info-tecnico" id="valor-boton">

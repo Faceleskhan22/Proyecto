@@ -52,15 +52,18 @@
                             <div class="data">
                             <h2>'.$fila["nombre"].' '.$fila["apellido"].
                             '</h2>
-                            <p>'.$fila_especialidad["nom_especialidad"].'</p>
+                            <p><span class="stick">💼</span>'.$fila_especialidad["nom_especialidad"].'</p>
+                            <form action="contratar.php" method="POST">
+                            <input type="hidden" name="id_tecnico" value='.$fila["id_tecnico"].'>
                             <div class="tecnico-bot">
-                            <button>Contratar</button>
+                           <button action="sumbit">Contratar</button>
+                           </form>
                             <button>Enviar mensaje</button>
                             </div>
                             </div>
                             <div class="data-dos">
-                                <p>'.$fila["valoracion_media"].'</p>
-                                <p>'.$fila["zona"].'</p>
+                                <p><span class="stick">⭐</span>'.$fila["valoracion_media"].'</p>
+                                <p><span class="stick">📍</span>'.$fila["zona"].'</p>
                             </div>
                         </div>
                         <div class="descripcion">

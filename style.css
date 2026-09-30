@@ -173,6 +173,134 @@ header h1{
     padding: 20px 30px;
     border-radius: 20px;
 }
+
+/*CATEGORIAS*/
+.categorias{
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 40px;
+    margin-top: 40px;
+}
+
+.categorias-ul{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.categorias ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.categorias-ul li{
+    font-size: 15px;
+}
+
+/*MAIN*/
+
+main{
+    padding: 20px;
+    flex: 1;
+
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.grid-item{
+    background-color: whitesmoke;
+    padding: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    border: solid 2px #777;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: aparecer 0.5s ease;
+}
+
+@keyframes aparecer{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.grid-item:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/*TECNICOS*/
+
+.info-tecnico{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: start;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.tecnico-icon{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info-icon{
+    width: 20px;
+    height: 20px;
+}
+
+#valor-boton{
+    justify-content: space-between;
+}
+
+.info-tecnico p{
+    font-size: 12px;
+}
+
+.info-tecnico h3{
+    font-size: 18px;
+}
+
+.info-tecnico h4{
+    font-size: 15px;
+}
+
+.info-tecnico button{
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    border-style: solid;
+    transition: background-color 0.3s ease;
+    background-color: #47e0ff;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    border-color:#2caac4;
+}
+
+.info-tecnico button:hover{
+    background-color: #2caac4;
+}
+
 /*FOOTER*/
 
 footer {
@@ -224,19 +352,19 @@ footer p {
     color: black;
 }
 .registro{
-    max-width: 550px;
+    max-width: 450px;
     min-width: 400px;
-    max-height: 750px;
+    max-height: 650px;
     min-height: 500px;
     background-color: tomato;
     margin: auto;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    padding: 10px;
-    border: solid #333 1px;
-    border-radius: 3px;
+    gap: 7px;
+    padding: 5px;
+    border: solid #333 0px;
+    border-radius: 20px;
 
 }
 .registro h1{
@@ -273,67 +401,54 @@ input::placeholder{
     margin-top: 10px;
     background-color: #2caac4;
 }
-.perfil{
-    padding: 30px;
+
+a{
+ color: blue;
+ text-decoration-color: transparent;
 }
-.datosnom{
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    text-align: center;
-}
-.datosnom img{
-    height: 200px;
-    width: 200px;
-}
-.nomuser{
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-}
-.nomusuario{
-    margin-top: 40px;
-    font-size: 40px;
-    margin-bottom: 0;
-}
-.separar{
-    border: 2px solid;
-    align-self: center;
+.registro2{
+    max-width: 480px;
+    min-width: 400px;
+    max-height: 560px;
+    min-height: 500px;
+    background-color: tomato;
+
     margin: auto;
-    margin: 30px 0;
-}
-.datos{
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-    justify-content: space-between;
-}
-.dato, .dato-dos{
+    text-align: center;
     display: flex;
     flex-direction: column;
-    text-align: left;
+    gap: 7px;
+    padding: 20px;
+    border: solid #333 0px;
+    border-radius: 20px;
+    bottom:50%;
+  
+}
+.registro2 h1{
+    font-size: 26px;
+}
+.registro2 img{
+    min-width:40px ;
+    max-width:80px ;
+    min-height:40px ;
+    max-height:80px ;
+    margin: auto;
+}
+
+.registro2 input, .bot{
+    border: none;
+    border-radius: 5px;
+    max-width:500px;
+    min-width: 350px;
+    transition: 0.3s ease;
+    margin: auto;
+    border-radius: 15px;
+    padding: 5px;
+}
+input::placeholder{
+    color: #777;
+
+}
+.label{
     font-size: 20px;
 }
-.dato-dos{
-    margin-right:100px;
-}
-.perfil-bot{
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-size: 15px;
-    border-style: solid;
-    transition: background-color 0.3s ease;
-    background-color: #47e0ff;
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
-    border-color:#2caac4;
-    margin-top: 30px;
-    margin: auto;
-    margin-left:20px;
-}
-.perfil-bot:hover{
-    background-color: #2caac4;
-}
-
-

@@ -2,7 +2,7 @@
 $server="localhost";
 $user="root";
 $pass="";
-$base="technician_marketplace";
+$base="proyecto";
 
 $conexion= new mysqli($server, $user, $pass, $base);
 if ($conexion->connect_errno) {

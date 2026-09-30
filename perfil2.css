@@ -176,6 +176,11 @@ header h1{
 /*FOOTER*/
 
 footer {
+    position: fixed;
+    margin-top: auto;
+    left: 0;
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
     background-color: tomato;
     color: black;
@@ -193,12 +198,16 @@ footer {
     justify-content: center;
     gap: 20px;
     margin: 20px 0;
+    align-items: center;
 }
 
 .footer-links a {
     text-decoration: none;
     color: black;
     transition: text-decoration 0.3s;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .footer-links a:hover {
@@ -211,17 +220,24 @@ footer {
     justify-content: center;
     gap: 30px;
     margin: 20px 0;
+    align-items: center;
 }
 
 .footer-media img {
     background-attachment: fixed;
     width: auto;
     height: 30px;
+    align-items: center;
+    justify-content: center;
+
 }
 
 footer p {
     font-size: 15px;
     color: black;
+    align-items: center;
+    justify-content: center;
+
 }
 .registro{
     max-width: 550px;
@@ -329,11 +345,27 @@ input::placeholder{
     cursor: pointer;
     border-color:#2caac4;
     margin-top: 30px;
+    margin-bottom: 20px;
     margin: auto;
-    margin-left:20px;
+    position:fixed;
+    right: 3%;
+    top:39%;
+    
+
 }
 .perfil-bot:hover{
     background-color: #2caac4;
 }
 
 
+.email{
+    color: blue;
+    font-style: overline;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.stick{
+    font-size: 20px;
+}
+.stick2{
+    font-size: 29px;
+}

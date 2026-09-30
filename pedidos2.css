@@ -11,6 +11,10 @@
 body{
     background-color: rgb(220, 220, 220);
     scroll-behavior: smooth;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /*BARRA SUPERIOR*/
@@ -100,20 +104,6 @@ aside a{
     text-decoration: none;
     font-size: 18px;
 }
-
-.categorias-ul li{
-    color: black;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-h2{
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: black;
-    text-align: center;
-}
-
 aside img{
     width: 25px;
     height: 25px;
@@ -127,56 +117,17 @@ aside img{
     margin: 20px auto;
 }
 
-/*CONTENIDO*/
-
-.content{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    top: 0;
-    bottom: 0;
-}
-
 .container{
     margin-left: 200px;
 }
-
-/*HEADER*/
-
-header{
-    height: 60vh;
-    background-image: url("imagenes/fondo.jpg");
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    justify-content: start;
-    align-items: center;
+main{
+    padding: 40px;
+    flex: 1;
 }
-
-header::before{
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: rgba(0,0,0,0.2);
-}
-
-header h1{
-    font-family: "Rubik Mono One";
-    position: relative;
-    color: tomato;
-    font-size: 60px;
-    z-index: 1;
-    margin-left: 60px;
-    backdrop-filter: blur(5px);
-    background-color: rgba(255,255,255,0.1);
-    padding: 20px 30px;
-    border-radius: 20px;
-}
-/*FOOTER*/
-
 footer {
-    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     background-color: tomato;
     color: black;
     width: 100%;
@@ -184,6 +135,7 @@ footer {
     text-align: center;
     font-size: 15px;
     bottom:0;
+    margin-top:auto;
 }
 
 .footer-links ul{
@@ -223,101 +175,54 @@ footer p {
     font-size: 15px;
     color: black;
 }
-.registro{
-    max-width: 550px;
-    min-width: 400px;
-    max-height: 750px;
-    min-height: 500px;
-    background-color: tomato;
-    margin: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 10px;
-    border: solid #333 1px;
-    border-radius: 3px;
 
-}
-.registro h1{
-    font-size: 20px;
-}
-.registro img{
-    min-width:40px ;
-    max-width:80px ;
-    min-height:40px ;
-    max-height:80px ;
-    margin: auto;
-}
-.registro input, .bot{
-    border: none;
-    border-radius: 5px;
-    max-width:500px;
-    min-width: 350px;
-    transition: 0.3s ease;
-    margin: auto;
+
+
+.pedido{
+    background-color: whitesmoke;
+    padding:0;
     border-radius: 15px;
-    padding: 3px;
-}
-input::placeholder{
-    color: #777;
-}
-.in{
-    margin: auto;
-    text-align: left;
-    max-width:520px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+     text-align: center;
+    border: solid 2px #777;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: aparecer 0.5s ease;
     display: flex;
-    flex-direction:column ;
+    flex-direction: column;
+    gap:15px;
+    padding:20px;
+    width: 51%;
+    height: 80%;
 }
-.bot{
-    margin-top: 10px;
-    background-color: #2caac4;
+.pedido:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
-.perfil{
-    padding: 30px;
+@keyframes aparecer{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-.datosnom{
+.pedido-info{
     display: flex;
-    flex-direction: row;
     gap: 50px;
-    text-align: center;
 }
-.datosnom img{
-    height: 200px;
-    width: 200px;
+.pedido-ima{
+    width: 90px;
+    height: 96px;
+    padding-bottom: 20px;
 }
-.nomuser{
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+.data-dos{
+    flex: 1;
+    text-align: right;
 }
-.nomusuario{
-    margin-top: 40px;
-    font-size: 40px;
-    margin-bottom: 0;
-}
-.separar{
-    border: 2px solid;
-    align-self: center;
-    margin: auto;
-    margin: 30px 0;
-}
-.datos{
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-    justify-content: space-between;
-}
-.dato, .dato-dos{
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    font-size: 20px;
-}
-.dato-dos{
-    margin-right:100px;
-}
-.perfil-bot{
+.mensaje-bot{
     padding: 5px 10px;
     border-radius: 10px;
     font-size: 15px;
@@ -328,12 +233,59 @@ input::placeholder{
     font-weight: 500;
     cursor: pointer;
     border-color:#2caac4;
-    margin-top: 30px;
-    margin: auto;
-    margin-left:20px;
+   
 }
-.perfil-bot:hover{
+.mensaje-bot:hover{
     background-color: #2caac4;
 }
-
-
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+}
+label{
+    margin-bottom: 10px;
+}
+.separar{
+    margin-top: 50px;
+    width: 100%;
+    height: 13px;
+    background-color: black;
+    color: black;
+    margin: 10px auto;
+}
+.error{
+    color: red !important;
+    font-size: 20px;
+    font-style: overline;
+}
+.info-pedido{
+    text-align: left;
+    font-size: 20px;
+    color: black;
+    display:flex;
+    flex-direction: column;
+}
+.info{
+    color: rgb(46, 38, 38);
+    text-decoration: solid;
+    font-size: 19px;
+}
+   
+button{
+    height: 40px;
+    margin-right: 20px;
+    width: 140px;
+    color: black;
+    font-size: 19px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #47e0ff;
+    border:1px solid #2caac4;
+    border-radius: 20px;
+    transition: transform 0.3s ease ,  background-color;
+}
+button:hover{
+  transform: scale(1.0);
+  background-color: #2caac4;
+}

@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link rel="stylesheet" href="perfil.css">
+    <link rel="stylesheet" href="perfil2.css">
 </head>
 <body>
     <div class="top-bar">
@@ -35,7 +35,7 @@
         session_start();
         include("conexion.php");
         if($_SESSION['user']==""){
-           header("Location: registro.html");
+           header("Location: inicio.html");
            session_unset();
         }
         else{
@@ -47,31 +47,57 @@
            $sql2="SELECT * FROM direccion WHERE id_usuario = {$fila1['id_usuario']}";
            $res2=mysqli_query($conexion,$sql2);
            $fila2=mysqli_fetch_assoc($res2);
-           echo "
-           <div class='perfil'>
-           <div class='datosnom'>
-              <img src='imagenes/perfil.png'>
-              <div class='nomuser'>
-              <h2 class='nomusuario'>".$fila1['nom_usuario']."</h2>
-              <p>email</p>
-              </div>
-           </div>
-           <div class='separar'></div>
-           <div class='datos'>
-           <div class='dato'>
-           <p>Direccion: </p>
-           <p>".$fila2['calle']." ".$fila2['numero'].", ".$fila2['localidad']."</p>
-           </div>
-           <div class='dato-dos'>
-           <p>Pedidos realizados: </p>
-           <p>numero </p>
-           </div>
-           </div>
-           </div>
-           ";
+           $id_usuario = $fila1['id_usuario'];
+
+$sql3 = "SELECT COUNT(*) AS cantidad 
+         FROM pedidos 
+         WHERE id_usuario = ?";
+
+$stmt = $conexion->prepare($sql3);
+$stmt->bind_param("i", $id_usuario);
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+$datos = $resultado->fetch_assoc();
+
+$total_pedidos = $datos['cantidad'];
+
+echo "
+<div class='perfil'>
+
+    <div class='datosnom'>
+        <img src='imagenes/perfil.png'>
+
+        <div class='nomuser'>
+            <h2 class='nomusuario'><span class='stick2'>👤</span> ".$fila1['nom_usuario']."</h2>
+            <p><span class='stick'>✉️</span>Email: <span class='email'>".$fila1['email']."</span></p>
+        </div>
+    </div>
+
+    <a href='logout.php'>
+        <button class='perfil-bot'>Cerrar Sesion</button>
+    </a>
+
+    <div class='separar'></div>
+
+    <div class='datos'>
+
+        <div class='dato'>
+            <p><span class='stick'>📍</span>Direccion:  ".$fila2['calle']." ".$fila2['numero'].", ".$fila2['localidad']." </p>
+        </div>
+
+        <div class='dato-dos'>
+            <p><span class='stick'>📦</span>Pedidos realizados:  ".$total_pedidos."</p>
+            
+        </div>
+
+    </div>
+
+</div>
+";
         }
         ?>
-           <a href='registro.html'><button class="perfil-bot">Cerrar Sesion</button></a>
+    
     </main>
 
      <footer>
